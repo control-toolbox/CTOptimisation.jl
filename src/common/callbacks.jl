@@ -1,11 +1,11 @@
 # --------------------------------------------------------------------------------------------------
 # General abstract type for callbacks
-abstract type CTCallback end
-const CTCallbacks = Tuple{Vararg{CTCallback}}
+abstract type OptimisationCallback end
+const OptimisationCallbacks = Tuple{Vararg{OptimisationCallback}}
 
 # --------------------------------------------------------------------------------------------------
 # Print callback
-mutable struct PrintCallback <: CTCallback
+mutable struct PrintCallback <: OptimisationCallback
     callback::Function
     priority::Integer
     function PrintCallback(cb::Function; priority::Integer=1)
@@ -19,7 +19,7 @@ end
 const PrintCallbacks = Tuple{Vararg{PrintCallback}}
 
 #
-function get_priority_print_callbacks(cbs::CTCallbacks)
+function get_priority_print_callbacks(cbs::OptimisationCallbacks)
     callbacks_print = ()
     priority = -Inf
 
@@ -40,7 +40,7 @@ function get_priority_print_callbacks(cbs::CTCallbacks)
 end
 
 # Stop callback
-mutable struct StopCallback <: CTCallback
+mutable struct StopCallback <: OptimisationCallback
     callback::Function
     priority::Integer
     function StopCallback(cb::Function; priority::Integer=1)
@@ -55,7 +55,7 @@ end
 const StopCallbacks = Tuple{Vararg{StopCallback}}
 
 #
-function get_priority_stop_callbacks(cbs::CTCallbacks)
+function get_priority_stop_callbacks(cbs::OptimisationCallbacks)
     callbacks_stop = ()
     priority = -Inf
 

@@ -2,6 +2,18 @@
 # General abstract type for exceptions
 abstract type OptimisationException <: Exception end
 
+# inconsistent argument
+struct InconsistentArgument <: CTException
+    var::String
+end
+
+"""
+	Base.showerror(io::IO, e::InconsistentArgument)
+
+TBW
+"""
+Base.showerror(io::IO, e::InconsistentArgument) = print(io, e.var)
+
 # incorrect method
 struct IncorrectMethod <: OptimisationException
     var::Symbol
