@@ -19,7 +19,7 @@ include("nlp.jl")
 #
 include("descent/structs.jl")
 include("descent/solver.jl")
-include("descent/main.jl")
+include("descent/interface.jl")
 #
 export NLP, solve
 export OptimisationProblem, OptimisationInit, OptimisationSolution
