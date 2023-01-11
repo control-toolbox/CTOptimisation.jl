@@ -1,4 +1,4 @@
-module CTOptimisation
+module CommonSolveOptimisation
 
 using ForwardDiff: jacobian, gradient, ForwardDiff # automatic differentiation
 using LinearAlgebra # for the norm for instance
@@ -19,7 +19,7 @@ include("nlp.jl")
 #
 include("descent/structs.jl")
 include("descent/solver.jl")
-include("descent/main.jl")
+include("descent/interface.jl")
 #
 export NLP, solve
 export OptimisationProblem, OptimisationInit, OptimisationSolution
@@ -28,4 +28,4 @@ export DescentProblem, DescentInit, DescentSol
 export OptimisationException, InconsistentArgument, IncorrectMethod
 export OptimisationCallback, PrintCallback, StopCallback
 
-end # module CTOptimisation
+end # module CommonSolveOptimisation
