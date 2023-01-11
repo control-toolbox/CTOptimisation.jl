@@ -8,27 +8,20 @@ const Dimension = Integer
 abstract type OptimisationProblem end
 
 # Unconstrained pb: min f(x), x ∈ Rⁿ
-# todo: on pourra laisser au solveur le calcul du gradient si on ne le fournit pas. A voir.
 struct UnconstrainedProblem <: OptimisationProblem
     f::Function # function to minimize
     ∇f::Function # gradient of the function
     n::Union{Dimension,Nothing} # f(x), x ∈ Rⁿ
-    function UnconstrainedProblem(f::Function, ∇f::Function, n::Union{Dimension,Nothing}=nothing)
-        new(f, ∇f, n)
-    end
-    function UnconstrainedProblem(f::Function, n::Union{Dimension,Nothing}=nothing)
-        ∇f(x) = ∇(f, x)
+    function UnconstrainedProblem(f::Function, ∇f::Function, n::Union{Dimension,Nothing})
         new(f, ∇f, n)
     end
 end
 
 # Creation of an unconstrained problem
-function NLP(f::Function, ∇f::Function)
-    return UnconstrainedProblem(f, ∇f)
-end
-
-function NLP(f::Function)
-    return UnconstrainedProblem(f)
+# the optional arguments are keywords
+# todo: on pourra laisser au solveur le calcul du gradient si on ne le fournit pas. A voir.
+function NLP(f::Function; gradient::Function=x->∇(f, x), dimension::Union{Dimension,Nothing}=nothing)
+    return UnconstrainedProblem(f, gradient, dimension)
 end
 
 # --------------------------------------------------------------------------------------------------

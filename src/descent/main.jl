@@ -10,7 +10,7 @@ function solve_by_descent(
     optimalityTolerance::Number=__optimalityTolerance(),
     stagnationTolerance::Number=__stagnationTolerance(),
     display::Bool=__display(),
-    callbacks::CTCallbacks=__callbacks()
+    callbacks::OptimisationCallbacks=__callbacks()
 )
 
     # --------------------------------------------------------------------------------------------------

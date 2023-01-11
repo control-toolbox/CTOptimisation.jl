@@ -1,15 +1,19 @@
 # [test/runtests.jl]
 using CTOptimisation
+#using CTDescriptions # todo: la compilation ne fonctionne pas si je fais ce using
 using Test
+using LinearAlgebra
 
 # Test scripts
-
-# [test/foo_test.jl]
-@testset "Foo test" begin
-    v = CTOptimisation.foo(10,5)
-    @test v == 10+5
-    @test typeof(v) == Int
-    v = CTOptimisation.foo(10.0, 5)
-    @test v == 10.0+5
-    @test typeof(v) == Float64
+@testset verbose = true showtiming = true "Optimisation Solvers" begin
+    for name in (
+        "callbacks", 
+        "exceptions",
+        "nlp",
+        "descent"
+        )
+        @testset "$name" begin
+            include("test_$name.jl")
+        end
+    end
 end

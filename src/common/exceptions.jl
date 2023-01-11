@@ -3,7 +3,7 @@
 abstract type OptimisationException <: Exception end
 
 # inconsistent argument
-struct InconsistentArgument <: CTException
+struct InconsistentArgument <: OptimisationException
     var::String
 end
 

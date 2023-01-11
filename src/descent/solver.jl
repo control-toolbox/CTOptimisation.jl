@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # solver
 """
-	descent_solver(sdp::DescentProblem, 
+	descent_solver(dp::DescentProblem, 
 	init::DescentInit; 
 	direction::Symbol=__direction(), 
 	line_search::Symbol=__line_search(),
@@ -11,12 +11,12 @@
 	optimalityTolerance::Number=__optimalityTolerance(), 
 	stagnationTolerance::Number=__stagnationTolerance(),
 	display::Bool=__display(),
-	callbacks::CTCallbacks=__callbacks())
+	callbacks::OptimisationCallbacks=__callbacks())
 
 TBW
 """
 function descent_solver(
-    sdp::DescentProblem,
+    dp::DescentProblem,
     init::DescentInit;
     direction::Symbol=__direction(),
     line_search::Symbol=__line_search(),
@@ -26,7 +26,7 @@ function descent_solver(
     optimalityTolerance::Number=__optimalityTolerance(),
     stagnationTolerance::Number=__stagnationTolerance(),
     display::Bool=__display(),
-    callbacks::CTCallbacks=__callbacks()
+    callbacks::OptimisationCallbacks=__callbacks()
 )
 
     # print callbacks
@@ -49,9 +49,6 @@ function descent_solver(
         return stop, stopping, message, success
     end
 
-    # update step_length according to line_search method if step_length has default value
-    step_length = __step_length(line_search, step_length)
-
     # test if the chosen method are correct
     if line_search ∉ (:backtracking, :fixedstep, :bissection)
         throw(IncorrectMethod(line_search))
@@ -60,9 +57,12 @@ function descent_solver(
         throw(IncorrectMethod(direction))
     end
 
+    # update step_length according to line_search method if step_length has default value
+    step_length = __step_length(line_search, step_length)
+    
     # general descent solver data
-    ∇f = sdp.∇f
-    f  = sdp.f
+    ∇f = dp.∇f
+    f  = dp.f
     xᵢ = init.x
     s₀ = step_length
     sᵢ = s₀
@@ -70,7 +70,7 @@ function descent_solver(
 
     # for BFGS and steepest descent (ie gradient method)
     n = length(xᵢ)
-    Iₙ = Matrix{Float64}(I, n, n)
+    Iₙ = Matrix{Float64}(I, n, n) # todo: remplacer Float64 par le type des éléments de x
     Hᵢ = Iₙ
     gᵢ = ∇f(xᵢ)
     ng₀ = norm(gᵢ)
