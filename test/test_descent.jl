@@ -1,7 +1,7 @@
 # functions which are not exported
-make_descent_init = CTOptimisation.make_descent_init
-make_descent_problem = CTOptimisation.make_descent_problem
-descent_solver = CTOptimisation.descent_solver
+make_descent_init = CommonSolveOptimisation.make_descent_init
+make_descent_problem = CommonSolveOptimisation.make_descent_problem
+descent_solver = CommonSolveOptimisation.descent_solver
 
 # problem and solution
 f(x)  = 2*(x[1]+x[2]+x[3]-3)^2 + (x[1]-x[2])^2 + (x[2]-x[3])^2

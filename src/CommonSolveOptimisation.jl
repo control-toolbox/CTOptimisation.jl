@@ -1,4 +1,4 @@
-module CTOptimisation
+module CommonSolveOptimisation
 
 using ForwardDiff: jacobian, gradient, ForwardDiff # automatic differentiation
 using LinearAlgebra # for the norm for instance
@@ -28,4 +28,4 @@ export DescentProblem, DescentInit, DescentSol
 export OptimisationException, InconsistentArgument, IncorrectMethod
 export OptimisationCallback, PrintCallback, StopCallback
 
-end # module CTOptimisation
+end # module CommonSolveOptimisation

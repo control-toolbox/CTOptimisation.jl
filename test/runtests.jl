@@ -1,5 +1,5 @@
 # [test/runtests.jl]
-using CTOptimisation
+using CommonSolveOptimisation
 #using CTDescriptions # todo: la compilation ne fonctionne pas si je fais ce using
 using Test
 using LinearAlgebra
