@@ -15,16 +15,17 @@ include("common/callbacks.jl")
 include("common/default.jl")
 include("common/exceptions.jl")
 #
-include("nlp.jl")
+include("OptimisationProblem.jl")
+include("Optimisationsolve.jl")
 #
 include("descent/structs.jl")
 include("descent/solver.jl")
 include("descent/interface.jl")
 #
-export NLP, solve
+export solve
 export OptimisationProblem, OptimisationInit, OptimisationSolution
 export UnconstrainedProblem
-export DescentProblem, DescentInit, DescentSol
+#export DescentProblem, DescentInit, DescentSolution
 export OptimisationException, InconsistentArgument, IncorrectMethod
 export OptimisationCallback, PrintCallback, StopCallback
 

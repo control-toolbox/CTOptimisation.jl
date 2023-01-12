@@ -3,7 +3,7 @@
 function solve_by_descent(
     nlp::UnconstrainedProblem,
     method::Description;
-    init::Union{Nothing,Primal,DescentSol}=nothing,
+    init::Union{Nothing,Primal,DescentSolution}=nothing,
     iterations::Integer=__iterations(),
     step_length::Union{Number,Nothing}=__step_length(),
     absoluteTolerance::Number=__absoluteTolerance(),

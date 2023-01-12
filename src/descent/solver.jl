@@ -137,7 +137,7 @@ function descent_solver(
 
     end
 
-    sol = DescentSol(xᵢ, stopping, message, success, i)
+    sol = DescentSolution(xᵢ, stopping, message, success, i)
 
     display ? print_convergence(sol) : nothing
 
@@ -324,7 +324,7 @@ end
 
 TBW
 """
-function print_convergence(sol::DescentSol)
+function print_convergence(sol::DescentSolution)
     println("")
     println("Descent solver result:")
     println("   iterations: ", sol.iterations)
