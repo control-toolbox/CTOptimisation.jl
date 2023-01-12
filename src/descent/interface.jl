@@ -1,16 +1,18 @@
+# todo :
+# - doit retourner un OptimisationSolution, ie ici un UnconstrainedSolution
+# - on met les valeurs par défaut à l'appel au solveur avec un kwargs bien placé pour la priorité
+# - l'init est gérée différemment car on donne plusieurs possibilité :
+#   • remplacer DescentSolution par UnconstrainedSolution
+#   • ajouter la possibilité de donner une UnconstrainedInit
+
 # --------------------------------------------------------------------------------------------------
 # Solver of an ocp by descent method
 function solve_by_descent(
-    nlp::UnconstrainedProblem,
+    prob::UnconstrainedProblem,
     method::Description;
     init::Union{Nothing,Primal,DescentSolution}=nothing,
-    iterations::Integer=__iterations(),
-    step_length::Union{Number,Nothing}=__step_length(),
-    absoluteTolerance::Number=__absoluteTolerance(),
-    optimalityTolerance::Number=__optimalityTolerance(),
-    stagnationTolerance::Number=__stagnationTolerance(),
     display::Bool=__display(),
-    callbacks::OptimisationCallbacks=__callbacks()
+    kwargs...
 )
 
     # --------------------------------------------------------------------------------------------------
@@ -22,31 +24,26 @@ function solve_by_descent(
     direction, line_search = descent_read(method)
 
     # --------------------------------------------------------------------------------------------------
-    # get the default options for those which depend on the method
-    step_length = __step_length(line_search, step_length)
-
-    # --------------------------------------------------------------------------------------------------
-    # step 1: transcription from ocp to descent problem and init
+    # transcription from ocp to descent problem and init
     #
-    descent_init = make_descent_init(nlp, init)
-    descent_problem = make_descent_problem(nlp)
+    descent_init = make_descent_init(prob, init)
+    descent_problem = make_descent_problem(prob)
 
     # --------------------------------------------------------------------------------------------------
-    # step 2: resolution of the problem
-    cbs_print = get_priority_print_callbacks(callbacks)
-    cbs_stop = get_priority_stop_callbacks(callbacks)
+    # resolution of the problem
     descent_sol = descent_solver(
         descent_problem,
         descent_init,
         direction=direction,
         line_search=line_search,
-        iterations=iterations,
-        step_length=step_length,
-        absoluteTolerance=absoluteTolerance,
-        optimalityTolerance=optimalityTolerance,
-        stagnationTolerance=stagnationTolerance,
+        iterations=__iterations(),
+        step_length=__step_length(),
+        absoluteTolerance=__absoluteTolerance(),
+        optimalityTolerance=__optimalityTolerance(),
+        stagnationTolerance=__stagnationTolerance(),
+        callbacks=__callbacks(),
         display=display,
-        callbacks=(cbs_print..., cbs_stop...),
+        kwargs...
     )
 
     return descent_sol

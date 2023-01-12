@@ -1,7 +1,7 @@
 # --------------------------------------------------------------------------------------------------
 # solver
 """
-	descent_solver(dp::DescentProblem, 
+	descent_solver(prob::DescentProblem, 
 	init::DescentInit; 
 	direction::Symbol=__direction(), 
 	line_search::Symbol=__line_search(),
@@ -16,7 +16,7 @@
 TBW
 """
 function descent_solver(
-    dp::DescentProblem,
+    prob::DescentProblem,
     init::DescentInit;
     direction::Symbol=__direction(),
     line_search::Symbol=__line_search(),
@@ -25,8 +25,8 @@ function descent_solver(
     absoluteTolerance::Number=__absoluteTolerance(),
     optimalityTolerance::Number=__optimalityTolerance(),
     stagnationTolerance::Number=__stagnationTolerance(),
-    display::Bool=__display(),
-    callbacks::OptimisationCallbacks=__callbacks()
+    callbacks::OptimisationCallbacks=__callbacks(),
+    display::Bool=__display()
 )
 
     # print callbacks
@@ -61,8 +61,8 @@ function descent_solver(
     step_length = __step_length(line_search, step_length)
     
     # general descent solver data
-    ∇f = dp.∇f
-    f  = dp.f
+    ∇f = prob.∇f
+    f  = prob.f
     xᵢ = init.x
     s₀ = step_length
     sᵢ = s₀
