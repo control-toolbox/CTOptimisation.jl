@@ -13,7 +13,7 @@ end
 
 # --------------------------------------------------------------------------------------------------
 # definition of a solution for the descent method
-mutable struct DescentSol
+mutable struct DescentSolution
     x::Primal # the optimization variable solution
     stopping::Symbol # the stopping criterion at the end of the descent method
     message::String # the message corresponding to the stopping criterion
@@ -33,7 +33,7 @@ end
 function make_descent_init(nlp::UnconstrainedProblem, init::Primal)
     return DescentInit(init)
 end
-function make_descent_init(nlp::UnconstrainedProblem, init::DescentSol)
+function make_descent_init(nlp::UnconstrainedProblem, init::DescentSolution)
     return DescentInit(init.x)
 end
 
