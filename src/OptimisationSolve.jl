@@ -20,11 +20,11 @@ algorithms = add(algorithms, (:descent, :gradient, :bissection))
 algorithms = add(algorithms, (:descent, :gradient, :backtracking))
 algorithms = add(algorithms, (:descent, :gradient, :fixedstep))
 
-function solve(nlp::OptimisationProblem, description...; kwargs...)
+function solve(prob::OptimisationProblem, description...; kwargs...)
     method = getFullDescription(makeDescription(description...), algorithms)
     # if no error before, then the method is correct: no need of else
     if :descent ∈ method
-        return solve_by_descent(nlp, method; kwargs...)
+        return solve_by_descent(prob, method; kwargs...)
     end
 end
 

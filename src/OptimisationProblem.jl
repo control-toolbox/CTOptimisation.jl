@@ -28,7 +28,17 @@ end
 # Initialization
 abstract type OptimisationInit end
 
+struct UnconstrainedInit <: OptimisationInit
+    x::Primal
+end
+
 # --------------------------------------------------------------------------------------------------
 # Solution
 abstract type OptimisationSolution end
 
+struct UnconstrainedSolution <: OptimisationSolution
+    x::Primal
+    stopping::Symbol
+    message::String
+    iterations::Integer
+end

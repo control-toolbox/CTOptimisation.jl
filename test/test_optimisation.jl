@@ -18,6 +18,6 @@ end
 prob = OptimisationProblem(f, gradient=∇f, dimension=n)
 
 @testset "solve function" begin
-    sol = solve(prob, display=false); @test typeof(sol) == DescentSolution
+    sol = solve(prob, display=false); @test typeof(sol) == UnconstrainedSolution
     @test_throws Exception solve(prob, :algo_non_existant)
 end
