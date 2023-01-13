@@ -1,16 +1,9 @@
-# todo :
-# - doit retourner un OptimisationSolution, ie ici un UnconstrainedSolution
-# - on met les valeurs par défaut à l'appel au solveur avec un kwargs bien placé pour la priorité
-# - l'init est gérée différemment car on donne plusieurs possibilité :
-#   • remplacer DescentSolution par UnconstrainedSolution
-#   • ajouter la possibilité de donner une UnconstrainedInit
-
 # --------------------------------------------------------------------------------------------------
 # Solver of an ocp by descent method
 function solve_by_descent(
     prob::UnconstrainedProblem,
     method::Description;
-    init::Union{Nothing,Primal,DescentSolution}=nothing,
+    init::Union{Nothing,Primal,UnconstrainedSolution,UnconstrainedInit}=nothing,
     display::Bool=__display(),
     kwargs...
 )
@@ -46,7 +39,7 @@ function solve_by_descent(
         kwargs...
     )
 
-    return descent_sol
+    return make_unconstrained_solution(descent_sol)
 
 end
 

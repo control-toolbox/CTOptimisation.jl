@@ -30,6 +30,10 @@ atol_weak   = 1e-4
     @test typeof(init) == DescentInit
     @test init.x ≈ x0 atol=atol_strong
 
+    init = make_descent_init(prob, UnconstrainedInit(x0))
+    @test typeof(init) == DescentInit
+    @test init.x ≈ x0 atol=atol_strong
+
     init = make_descent_init(prob, sol)
     @test typeof(init) == DescentInit
     @test init.x ≈ x⁺ atol=atol_strong # compare to the solution
