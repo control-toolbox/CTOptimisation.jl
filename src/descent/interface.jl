@@ -3,7 +3,7 @@
 function solve_by_descent(
     prob::UnconstrainedProblem,
     method::Description;
-    init::Union{Nothing,Primal,UnconstrainedSolution,UnconstrainedInit}=nothing,
+    init::Union{Nothing,Primal,UnconstrainedSolution}=nothing,
     display::Bool=__display(),
     kwargs...
 )
