@@ -44,5 +44,5 @@ end
 # --------------------------------------------------------------------------------------------------
 # make unconstrained problem from descent problem
 function make_unconstrained_solution(sol::DescentSolution)
-    return UnconstrainedSolution(sol.x, sol.stopping, sol.message, sol.iterations)
+    return UnconstrainedSolution(sol.x, sol.stopping, sol.message, sol.success, sol.iterations)
 end
