@@ -46,6 +46,12 @@ end
 # test solver
 @testset "solve descent problem" begin
 
+    # 
+    struct DummyProblem <: OptimisationProblem
+    end
+    dummy_prob = DummyProblem()
+    @test_throws InconsistentArgument solve(dummy_prob)
+
     #
     init = make_descent_init(prob, x0)
     dp   = make_descent_problem(prob)

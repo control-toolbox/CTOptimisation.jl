@@ -2,6 +2,7 @@
 using CommonSolveOptimisation
 using Test
 using LinearAlgebra
+using ControlToolboxTools
 
 # functions and types that are not exported
 const make_descent_init    = CommonSolveOptimisation.make_descent_init
