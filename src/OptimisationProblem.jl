@@ -38,5 +38,6 @@ struct UnconstrainedSolution <: OptimisationSolution
     x::Primal
     stopping::Symbol
     message::String
+    success::Bool
     iterations::Integer
 end
