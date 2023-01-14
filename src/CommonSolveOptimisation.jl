@@ -10,10 +10,9 @@ Jac(f::Function, x) = ForwardDiff.jacobian(f, x)
 
 # dev packages
 using ControlToolboxTools
+const ControlToolboxCallbacks = Tuple{Vararg{ControlToolboxCallback}}
 #
-include("common/callbacks.jl")
-include("common/default.jl")
-include("common/exceptions.jl")
+include("./default.jl")
 #
 include("OptimisationProblem.jl")
 include("Optimisationsolve.jl")
@@ -25,7 +24,5 @@ include("descent/interface.jl")
 export solve
 export OptimisationProblem, OptimisationInit, OptimisationSolution
 export UnconstrainedProblem, UnconstrainedInit, UnconstrainedSolution
-export OptimisationException, InconsistentArgument, IncorrectMethod
-export OptimisationCallback, PrintCallback, StopCallback
 
 end # module CommonSolveOptimisation
