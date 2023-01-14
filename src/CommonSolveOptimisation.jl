@@ -25,7 +25,6 @@ include("descent/interface.jl")
 export solve
 export OptimisationProblem, OptimisationInit, OptimisationSolution
 export UnconstrainedProblem, UnconstrainedInit, UnconstrainedSolution
-#export DescentProblem, DescentInit, DescentSolution
 export OptimisationException, InconsistentArgument, IncorrectMethod
 export OptimisationCallback, PrintCallback, StopCallback
 

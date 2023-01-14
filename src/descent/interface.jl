@@ -3,7 +3,7 @@
 function solve_by_descent(
     prob::UnconstrainedProblem,
     method::Description;
-    init::Union{Nothing,Primal,UnconstrainedSolution,UnconstrainedInit}=nothing,
+    init::Union{Nothing,Primal,UnconstrainedSolution}=nothing,
     display::Bool=__display(),
     kwargs...
 )
@@ -18,7 +18,6 @@ function solve_by_descent(
 
     # --------------------------------------------------------------------------------------------------
     # transcription from ocp to descent problem and init
-    #
     descent_init = make_descent_init(prob, init)
     descent_problem = make_descent_problem(prob)
 
@@ -35,7 +34,7 @@ function solve_by_descent(
         optimalityTolerance=__optimalityTolerance(),
         stagnationTolerance=__stagnationTolerance(),
         callbacks=__callbacks(),
-        display=display,
+        display=display;
         kwargs...
     )
 

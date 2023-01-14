@@ -4,10 +4,14 @@ const Primal = Vector{<:Real}
 const Dimension = Integer
 
 # --------------------------------------------------------------------------------------------------
-# Optimisation Problem
+# Abstract Optimisation Problem, init and solution
 abstract type OptimisationProblem end
+abstract type OptimisationInit end
+abstract type OptimisationSolution end
 
+# --------------------------------------------------------------------------------------------------
 # Unconstrained pb: min f(x), x ∈ Rⁿ
+# Problem
 struct UnconstrainedProblem <: OptimisationProblem
     f::Function # function to minimize
     ∇f::Function # gradient of the function
@@ -24,18 +28,12 @@ function OptimisationProblem(f::Function; gradient::Function=x->∇(f, x), dimen
     return UnconstrainedProblem(f, gradient, dimension)
 end
 
-# --------------------------------------------------------------------------------------------------
-# Initialization
-abstract type OptimisationInit end
-
+# init
 struct UnconstrainedInit <: OptimisationInit
     x::Primal
 end
 
-# --------------------------------------------------------------------------------------------------
-# Solution
-abstract type OptimisationSolution end
-
+# solution
 struct UnconstrainedSolution <: OptimisationSolution
     x::Primal
     stopping::Symbol

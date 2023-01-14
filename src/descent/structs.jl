@@ -1,18 +1,14 @@
 # --------------------------------------------------------------------------------------------------
-# definition of a general descent problem
+# descent problem, init and solution
 mutable struct DescentProblem
     f::Function # function to minimize
     ∇f::Function # gradient of the function
 end
 
-# --------------------------------------------------------------------------------------------------
-# definition of an initialization for the descent method
 mutable struct DescentInit
     x::Primal # the optimization variable x of the descent method
 end
 
-# --------------------------------------------------------------------------------------------------
-# definition of a solution for the descent method
 mutable struct DescentSolution
     x::Primal # the optimization variable solution
     stopping::Symbol # the stopping criterion at the end of the descent method
@@ -22,13 +18,13 @@ mutable struct DescentSolution
 end
 
 # --------------------------------------------------------------------------------------------------
-#
+# make problem
 function make_descent_problem(nlp::UnconstrainedProblem)
     return DescentProblem(nlp.f, nlp.∇f)
 end
 
 # --------------------------------------------------------------------------------------------------
-#
+# make init
 function make_descent_init(nlp::UnconstrainedProblem, init::Nothing)
     if nlp.n === nothing
         throw(InconsistentArgument("you must provide either an initial iterate to the solver or the dimension of x to NLP method."))
@@ -46,7 +42,7 @@ function make_descent_init(nlp::UnconstrainedProblem, init::UnconstrainedInit)
 end
 
 # --------------------------------------------------------------------------------------------------
-#
+# make unconstrained problem from descent problem
 function make_unconstrained_solution(sol::DescentSolution)
     return UnconstrainedSolution(sol.x, sol.stopping, sol.message, sol.iterations)
 end
