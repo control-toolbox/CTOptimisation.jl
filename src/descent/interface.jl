@@ -42,6 +42,10 @@ function solve_by_descent(
 
 end
 
+function solve_by_descent(prob::OptimisationProblem, args...; kwargs...)
+    throw(InconsistentArgument("this problem can not be solved by descent method."))
+end
+
 # --------------------------------------------------------------------------------------------------
 # read the description to get the chosen methods
 # we assume the description is complete
