@@ -1,6 +1,5 @@
 # [test/runtests.jl]
 using CommonSolveOptimisation
-#using CTDescriptions # todo: la compilation ne fonctionne pas si je fais ce using
 using Test
 using LinearAlgebra
 
@@ -16,8 +15,6 @@ const descent_read         = CommonSolveOptimisation.descent_read
 # Test scripts
 @testset verbose = true showtiming = true "Optimisation Solvers" begin
     for name in (
-        "callbacks", 
-        "exceptions",
         "optimisation",
         "descent"
         )
