@@ -24,6 +24,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: julia-actions/add-julia-registry@v1
         with:
+          key: ${{ secrets.SSH_KEY }}
           registry: control-toolbox/ct-registry
       - uses: julia-actions/setup-julia@latest
         with:
