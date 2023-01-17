@@ -15,7 +15,7 @@ const ControlToolboxCallbacks = Tuple{Vararg{ControlToolboxCallback}}
 include("./default.jl")
 #
 include("OptimisationProblem.jl")
-include("Optimisationsolve.jl")
+include("OptimisationSolve.jl")
 #
 include("descent/structs.jl")
 include("descent/solver.jl")
