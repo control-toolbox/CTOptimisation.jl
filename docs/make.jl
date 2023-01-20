@@ -1,8 +1,8 @@
 using Documenter
-using CommonSolveOptimisation
+using CTOptimization
 
 makedocs(
-    sitename = "CommonSolveOptimisation.jl",
+    sitename = "CTOptimization.jl",
     format = Documenter.HTML(prettyurls = false),
     pages = [
         "Introduction" => "index.md",
@@ -11,6 +11,6 @@ makedocs(
 )
 
 deploydocs(
-    repo = "github.com/control-toolbox/CommonSolveOptimisation.jl.git",
+    repo = "github.com/control-toolbox/CTOptimization.jl.git",
     devbranch = "main"
 )
