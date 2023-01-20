@@ -11,7 +11,7 @@ f(x)  = 2*(x[1]+x[2]+x[3]-3)^2 + (x[1]-x[2])^2 + (x[2]-x[3])^2
 
 n=3
 
-prob = OptimisationProblem(f, gradient=∇f, dimension=n)
+prob = CTOptimizationProblem(f, gradient=∇f, dimension=n)
 x0  = [0.9; 0.9; 0.9]
 x⁺  = [1; 1; 1]
 sol = solve(prob, display=false)
@@ -47,7 +47,7 @@ end
 @testset "solve descent problem" begin
 
     # 
-    struct DummyProblem <: OptimisationProblem
+    struct DummyProblem <: CTOptimizationProblem
     end
     dummy_prob = DummyProblem()
     @test_throws InconsistentArgument solve(dummy_prob)

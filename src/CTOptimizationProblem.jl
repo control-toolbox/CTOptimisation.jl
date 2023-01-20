@@ -4,15 +4,15 @@ const Primal = Vector{<:Real}
 const Dimension = Integer
 
 # --------------------------------------------------------------------------------------------------
-# Abstract Optimisation Problem, init and solution
-abstract type OptimisationProblem end
-abstract type OptimisationInit end
-abstract type OptimisationSolution end
+# Abstract CTOptimization Problem, init and solution
+abstract type CTOptimizationProblem end
+abstract type CTOptimizationInit end
+abstract type CTOptimizationSolution end
 
 # --------------------------------------------------------------------------------------------------
 # Unconstrained pb: min f(x), x ∈ Rⁿ
 # Problem
-struct UnconstrainedProblem <: OptimisationProblem
+struct UnconstrainedProblem <: CTOptimizationProblem
     f::Function # function to minimize
     ∇f::Function # gradient of the function
     n::Union{Dimension,Nothing} # f(x), x ∈ Rⁿ
@@ -24,17 +24,17 @@ end
 # Creation of an unconstrained problem
 # the optional arguments are keywords
 # todo: on pourra laisser au solveur le calcul du gradient si on ne le fournit pas. A voir.
-function OptimisationProblem(f::Function; gradient::Function=x->∇(f, x), dimension::Union{Dimension,Nothing}=nothing)
+function CTOptimizationProblem(f::Function; gradient::Function=x->∇(f, x), dimension::Union{Dimension,Nothing}=nothing)
     return UnconstrainedProblem(f, gradient, dimension)
 end
 
 # init
-struct UnconstrainedInit <: OptimisationInit
+struct UnconstrainedInit <: CTOptimizationInit
     x::Primal
 end
 
 # solution
-struct UnconstrainedSolution <: OptimisationSolution
+struct UnconstrainedSolution <: CTOptimizationSolution
     x::Primal
     stopping::Symbol
     message::String

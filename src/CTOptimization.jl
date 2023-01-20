@@ -1,4 +1,4 @@
-module CommonSolveOptimisation
+module CTOptimization
 
 using ForwardDiff: jacobian, gradient, ForwardDiff # automatic differentiation
 using LinearAlgebra # for the norm for instance
@@ -14,15 +14,15 @@ const ControlToolboxCallbacks = Tuple{Vararg{ControlToolboxCallback}}
 #
 include("./default.jl")
 #
-include("OptimisationProblem.jl")
-include("OptimisationSolve.jl")
+include("CTOptimizationProblem.jl")
+include("CTOptimizationSolve.jl")
 #
 include("descent/structs.jl")
 include("descent/solver.jl")
 include("descent/interface.jl")
 #
 export solve
-export OptimisationProblem, OptimisationInit, OptimisationSolution
+export CTOptimizationProblem, CTOptimizationInit, CTOptimizationSolution
 export UnconstrainedProblem, UnconstrainedInit, UnconstrainedSolution
 
-end # module CommonSolveOptimisation
+end # module CTOptimization

@@ -20,7 +20,7 @@ algorithms = add(algorithms, (:descent, :gradient, :bissection))
 algorithms = add(algorithms, (:descent, :gradient, :backtracking))
 algorithms = add(algorithms, (:descent, :gradient, :fixedstep))
 
-function solve(prob::OptimisationProblem, description...; kwargs...)
+function solve(prob::CTOptimizationProblem, description...; kwargs...)
     method = getFullDescription(makeDescription(description...), algorithms)
     # if no error before, then the method is correct: no need of else
     if :descent ∈ method

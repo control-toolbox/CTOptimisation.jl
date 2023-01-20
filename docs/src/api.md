@@ -1,5 +1,5 @@
     ```@meta
-    CurrentModule = CommonSolveOptimisation 
+    CurrentModule = CTOptimization 
     ```
 
     ```@contents
@@ -10,6 +10,6 @@
     This page is a dump of all the docstrings found in the code. 
 
     ```@autodocs
-    Modules = [CommonSolveOptimisation]
+    Modules = [CTOptimization]
     Order = [:module, :type, :function, :macro]
     ```

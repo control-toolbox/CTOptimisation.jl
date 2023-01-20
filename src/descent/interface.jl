@@ -42,7 +42,7 @@ function solve_by_descent(
 
 end
 
-function solve_by_descent(prob::OptimisationProblem, args...; kwargs...)
+function solve_by_descent(prob::CTOptimizationProblem, args...; kwargs...)
     throw(InconsistentArgument("this problem can not be solved by descent method."))
 end
 
