@@ -16,7 +16,7 @@ const descent_read         = CTOptimization.descent_read
 # Test scripts
 @testset verbose = true showtiming = true "CTOptimization Solvers" begin
     for name in (
-        "CTOptimization",
+        "optimization",
         "descent"
         )
         @testset "$name" begin
