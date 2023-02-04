@@ -1,13 +1,10 @@
 # [.github/workflows/Documentation.yml]
 name: Documentation
-
 on:
-  push:
+  pull_request:
     branches:
       - main
     tags: '*'
-  pull_request:
-
 jobs:
   build:
     runs-on: ubuntu-latest
