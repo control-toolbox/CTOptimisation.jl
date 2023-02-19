@@ -11,7 +11,7 @@
 	optimalityTolerance::Number=__optimalityTolerance(), 
 	stagnationTolerance::Number=__stagnationTolerance(),
 	display::Bool=__display(),
-	callbacks::ControlToolboxCallbacks=__callbacks())
+	callbacks::CTCallbacks=__callbacks())
 
 TBW
 """
@@ -25,7 +25,7 @@ function descent_solver(
     absoluteTolerance::Number=__absoluteTolerance(),
     optimalityTolerance::Number=__optimalityTolerance(),
     stagnationTolerance::Number=__stagnationTolerance(),
-    callbacks::ControlToolboxCallbacks=__callbacks(),
+    callbacks::CTCallbacks=__callbacks(),
     display::Bool=__display()
 )
 
