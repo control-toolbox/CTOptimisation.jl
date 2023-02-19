@@ -2,7 +2,7 @@
 using CTOptimization
 using Test
 using LinearAlgebra
-using ControlToolboxTools
+using CTBase
 
 # functions and types that are not exported
 const make_descent_init    = CTOptimization.make_descent_init
